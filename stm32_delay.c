@@ -10,7 +10,7 @@ void delayInit(void)
 	SystemCoreClockUpdate();
 
 	//Timer configuration.
-	RCC->APB1ENR	|= RCC_APB1ENR_TIM6EN; //Enable clock timer
+	RCC->APB1ENR	|= RCC_APB1ENR_TIM6EN; //Enable peripheral clock timer at RCC->APB1ENR register
 
 	TIMER->CR1		= TIM_CR1_OPM | TIM_CR1_URS | TIM_CR1_ARPE;
 	TIMER->CR2		= 0;
