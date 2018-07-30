@@ -11,6 +11,7 @@
 
 #define DELAY_TICK_FREQUENCY_US 1000000   /* = 1MHZ -> microseconds delay */
 #define DELAY_TICK_FREQUENCY_MS 1000   	  /* = 1kHZ -> milliseconds delay */
+#define CLOCK_FREQUENCY			25000000	  /*Specify in case of using external oscilator*/
 #define TIMER					TIM6
 #define MULTIPLIER_FACTOR		16
 /*

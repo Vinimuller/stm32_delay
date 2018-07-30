@@ -6,8 +6,14 @@ uint16_t pscUs;
 
 void delayInit(void)
 {
+	uint32_t clkFreq;
 	//Update SystemCoreClock var with clock value
-	SystemCoreClockUpdate();
+	if(((RCC->CFGR & RCC_CFGR_SWS) == 0x08)){//Using external oscilator as clock. User must insert clock frequency
+		clkFreq = CLOCK_FREQUENCY;
+	}else{//Using internal oscilator
+		SystemCoreClockUpdate();
+		clkFreq = SystemCoreClock;
+	}
 
 	//Timer configuration.
 	RCC->APB1ENR	|= RCC_APB1ENR_TIM6EN; //Enable peripheral clock timer at RCC->APB1ENR register
@@ -15,8 +21,8 @@ void delayInit(void)
 	TIMER->CR1		= TIM_CR1_OPM | TIM_CR1_URS | TIM_CR1_ARPE;
 	TIMER->CR2		= 0;
 
-	pscMs	= (SystemCoreClock/DELAY_TICK_FREQUENCY_MS /MULTIPLIER_FACTOR) - 1;
-	pscUs	= (SystemCoreClock/DELAY_TICK_FREQUENCY_US /MULTIPLIER_FACTOR) - 1;
+	pscMs	= (clkFreq/DELAY_TICK_FREQUENCY_MS /MULTIPLIER_FACTOR) - 1;
+	pscUs	= (clkFreq/DELAY_TICK_FREQUENCY_US /MULTIPLIER_FACTOR) - 1;
 }
 
 // Do delay for mSecs milliseconds
