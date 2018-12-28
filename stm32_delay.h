@@ -1,5 +1,4 @@
-#include "stm32l0xx.h"
-
+#include "stm32f3xx.h"
 /* --- Delay based in Timer ---
  * This is a delay library that uses a timer for its time base.
  *
@@ -12,7 +11,7 @@
 #define DELAY_TICK_FREQUENCY_US 1000000   /* = 1MHZ -> microseconds delay */
 #define DELAY_TICK_FREQUENCY_MS 1000   	  /* = 1kHZ -> milliseconds delay */
 #define TIMER					TIM6
-#define MULTIPLIER_FACTOR		16
+#define MULTIPLIER_FACTOR		32
 /*
  *   Declare Functions
  */
