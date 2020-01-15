@@ -25,9 +25,11 @@
 void delayInit(void);
 
 // Do delay for mSecs milliseconds
+// max delay is 65535mS
 void Delay_ms(const uint16_t mSecs);
 
 // Do delay for uSecs microseconds
+// max delay is 65535uS
 void Delay_us(const uint16_t uSecs);
 
 static uint8_t dF;
