@@ -34,7 +34,7 @@ void delayInit(void)
 // max delay is 65535mS
 void Delay_ms(const uint16_t mSecs)
 {
-	ticks *= 1000 / dF; //Calculates the number of ticks
+	ticks = mSecs * 1000 / dF; //Calculates the number of ticks
 	while(ticks)
 	{
 		while(!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk));
