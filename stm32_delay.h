@@ -1,6 +1,15 @@
 #include "stm32f3xx.h"
 /* --- Delay based on SysTick ---
  *
+ * This lib uses SysTick as time base to generate delays.
+ * delayInit() must be called every time the clock of the
+ * system change. Please note the performance notes of this
+ * lib below.
+ *
+ * When delayInit() is called, SysTick will be continuously
+ * running. In low power applications this may be important
+ * to know.
+ *
  * Vinícius Müller Silveira - https://github.com/Vinimuller - 15/01/2020
  *
  * Perfomance notes of this lib running on stm32f334:
@@ -21,7 +30,8 @@
 #define DELAY_TICK_US 1000000   //Divisor factor to find how many ticks fits in 1uS
 #define MIN_TICKS 40			//Min ticks that works without overloading the system
 
-//Init SysTick
+//Init SysTick and calculates the period
+//of one tick.
 void delayInit(void);
 
 // Do delay for mSecs milliseconds

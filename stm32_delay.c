@@ -3,7 +3,8 @@
 static uint8_t dF = 1;
 static int32_t ticks = 0;
 
-//Init SysTick
+//Init SysTick and calculates the period
+//of one tick.
 void delayInit(void)
 {
 	//Updates SystemCoreClock var
