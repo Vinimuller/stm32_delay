@@ -1,4 +1,3 @@
-# stm32_delay
 # --- Delay Function Based on SysTick ---
   This lib uses SysTick as time base to generate delays.
   delayInit() must be called every time the clock of the
@@ -17,6 +16,7 @@
   - Delay_us(5) results in a 5.3uS delay
   - Delay_ms(1) results in a 1mS delay
   - Delay_ms(5) results in a 5mS delay
+  
   SysClock @ 8MHz:
   - Delay_us(1) results in a 5.3uS delay
   - Delay_us(5) results in a 7.7uS delay
